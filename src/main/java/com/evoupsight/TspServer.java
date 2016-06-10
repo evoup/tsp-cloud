@@ -20,7 +20,7 @@ public class TspServer
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("client connected");
-                TspService myService = new TspService(socket);
+                new TspService(socket);
             }
         } catch (IOException e) {
             System.err.println("TSP server, error:" + e);

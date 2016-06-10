@@ -18,7 +18,7 @@ public class TspService extends Thread {
             dos = new DataOutputStream(socket.getOutputStream());
             start();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
     }
