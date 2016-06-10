@@ -4,7 +4,7 @@ package com.evoupsight;
  * Hello world!
  *
  */
-public class App 
+public class TspServer
 {
     public static void main( String[] args )
     {

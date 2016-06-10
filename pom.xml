@@ -92,7 +92,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.evoupsight.App</mainClass>
+              <mainClass>com.evoupsight.TspServer</mainClass>
             </manifest>
           </archive>
         </configuration>
