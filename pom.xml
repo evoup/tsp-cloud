@@ -22,6 +22,7 @@
     <maven.deploy.version>2.7</maven.deploy.version>
     <maven.release.version>2.4.1</maven.release.version>
     <maven.javadoc.version>2.4</maven.javadoc.version>
+    <maven.jar.version>2.4</maven.jar.version>
   </properties>
 
   <dependencies>
@@ -82,6 +83,19 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
         <version>${maven.deploy.version}</version>
+      </plugin>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>${maven.jar.version}</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.evoupsight.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
 <!--      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
