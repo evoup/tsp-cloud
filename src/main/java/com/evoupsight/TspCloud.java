@@ -64,7 +64,7 @@ public class TspCloud {
         ///
         /// step02
         if (isLocalFolderOk) {
-            System.out.println("start to copy local folder to Hdfs...");
+            System.out.println("start to copy local folder to HDFS...");
             try {
                 Configuration conf = new Configuration();
                 Path srcPath = new Path("./" + folderName + "/" + fileName);
