@@ -60,6 +60,7 @@ public class TspCloud {
             isLocalFolderOk = true;
         } catch (Exception e) {
         }
+        System.out.println("test");
         ///
         /// step02
         if (isLocalFolderOk) {
@@ -73,7 +74,7 @@ public class TspCloud {
                 System.out.println("copy local folder to HDFS done:" + "/TSPFolder/" + fileName);
                 isHDFSFolderOK = true;
             } catch (Exception e) {
-                System.err.println("copy local folder to HDFS error:" + e.getMessage());
+                System.out.println("copy local folder to HDFS error:" + e.getMessage());
             }
         }
         ///
