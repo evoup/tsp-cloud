@@ -1,5 +1,9 @@
 package com.evoupsight;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,7 +32,7 @@ public class TspCloud {
     }
 
     public String doCloudOpertion() {
-        ///
+        /// step01
         try {
             // 在本地工作目录创建暂存文件的目录
             File foler = new File(folderName);
@@ -55,6 +59,22 @@ public class TspCloud {
             System.out.println("create local folder:" + folderName + " and file:" + fileName + " done.");
             isLocalFolderOk = true;
         } catch (Exception e) {
+        }
+        ///
+        /// step02
+        if (isLocalFolderOk) {
+            System.out.println("start to copy local folder to Hdfs...");
+            try {
+                Configuration conf = new Configuration();
+                Path srcPath = new Path("./" + folderName + "/" + fileName);
+                Path dstPath = new Path("/TSPFolder/" + fileName);
+                FileSystem hdfs = dstPath.getFileSystem(conf);
+                hdfs.copyFromLocalFile(false, srcPath, dstPath);
+                System.out.println("copy local folder to HDFS done:" + "/TSPFolder/" + fileName);
+                isHDFSFolderOK = true;
+            } catch (Exception e) {
+                System.err.println("copy local folder to HDFS error:" + e.getMessage());
+            }
         }
         ///
         return "some result";
