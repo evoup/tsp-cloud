@@ -3,7 +3,6 @@ package com.evoupsight.services;
 import com.evoupsight.TspCloud;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -31,15 +30,11 @@ public class TspService extends Thread {
     public void run() {
         //Code
         System.out.println("running");
-        ///
         try {
             while (true) {
                 // 客户端传递的城市数据，如A_B_C_D_E_F_G
                 BufferedReader br = new BufferedReader(isr);
                 String data;
-               /* while ((data = br.readLine()) != null) {
-                    System.out.println(data.length());
-                }*/
                 data = br.readLine();
                 System.out.println("data from client:" + data);
                 Hashtable cityTable = new Hashtable();
@@ -66,7 +61,6 @@ public class TspService extends Thread {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
-        ///
     }
 
 
