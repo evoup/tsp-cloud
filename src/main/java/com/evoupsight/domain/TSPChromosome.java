@@ -18,16 +18,40 @@ public class TSPChromosome {
             {16, 20, 19, 18, 21, 20, 17, 8, 13, 0}
     };
 
+    // 计算染色体的适应度
     public int getFitnessValue() {
         int fitnessValue = 0;
         for (int i = 0; i < 10; i++) {
             // 查表取得目前索引值城市和下一个城市之间的距离
             if (i == 9) {
                 // 应对比数组中最后一个城市和数组第一个城市
-                //int rowInx = ((int))
+                int rowInx = ((int) gene[i]) - 65;
+                int colInx = ((int) gene[i + 1]) - 65;
+                fitnessValue += distance[rowInx][colInx];
             }
         }
-        return 0;
+        return fitnessValue;
+    }
+
+    // 计算传入染色体的适应度
+    public synchronized static int caculateFitnessValue(String geneStr) {
+        int fitnessValue = 0;
+        char[] localGene = geneStr.toCharArray();
+        for (int i = 0; i < localGene.length; i++) {
+            // 查表取得目前索引值城市和下一个城市的距离
+            if (i == (localGene.length - 1)) {
+                int rowInx = ((int) localGene[i]) - 65;
+                int colInx = ((int) localGene[0]) - 65;
+                fitnessValue += distance[rowInx][colInx];
+            } else {
+                // 索引值指向目前城市和下一个城市
+                // 字符A的ASCII值是65，因而指向第0个元素
+                int rowInx = ((int) localGene[i]) - 65;
+                int colInx = ((int) localGene[i + 1]) - 65;
+                fitnessValue += distance[rowInx][colInx];
+            }
+        }
+        return fitnessValue;
     }
 
     public void setGeneArray(String chromosome) {
