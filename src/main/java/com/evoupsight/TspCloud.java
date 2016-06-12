@@ -91,13 +91,16 @@ public class TspCloud {
         conf.setOutputFormat(TextOutputFormat.class);
         // 设置map/reduce的功能的类
         conf.setMapperClass(MyMap.class);
-        //conf.setReducerClass(MyReduce.class);
+        conf.setReducerClass(MyReduce.class);
         // 设置输出数据主键值类型
         conf.setOutputKeyClass(Text.class);
+        // 设置输出数据值类型
         conf.setOutputValueClass(Text.class);
+        // 设置输入文件路径
+        FileInputFormat.setInputPaths(conf, new Path("/TSPFolder/" + fileName));
         // 设置输出文件路径（任务名是目录的一部分）
         String outputFolder = "/TSPOutput/" + jobName;
-        FileInputFormat.setInputPaths(conf, new Path(outputFolder));
+        FileOutputFormat.setOutputPath(conf, new Path(outputFolder));
         System.out.println("HDFS Output folder:" + outputFolder);
         // 执行云计算工作
         try {
