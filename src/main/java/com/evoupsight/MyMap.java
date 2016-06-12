@@ -23,6 +23,7 @@ public class MyMap extends MapReduceBase implements Mapper<LongWritable, Text, T
         // 存储染色体数据的列表
         Vector chromosomeList = new Vector();
         for (int i = 1; i < 7; i++) {
+            System.out.println("datas[i]:" + datas[i]);
             chromosomeList.addElement(datas[i]);
         }
         // 创建TSP遗传算法的对象
