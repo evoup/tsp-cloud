@@ -1,6 +1,6 @@
 package com.evoupsight;
 
-import com.evoupsight.services.TspService;
+import com.evoupsight.services.GeneService;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -20,7 +20,7 @@ public class TspServer
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("client connected");
-                new TspService(socket);
+                new GeneService(socket);
             }
         } catch (IOException e) {
             System.err.println("TSP server, error:" + e);

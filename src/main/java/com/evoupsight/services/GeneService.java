@@ -12,11 +12,11 @@ import java.util.Hashtable;
  * Created by evoup on 16-6-10.
  * 业务线程
  */
-public class TspService extends Thread {
+public class GeneService extends Thread {
     DataOutputStream dos;
     InputStreamReader isr;
 
-    public TspService(Socket socket) {
+    public GeneService(Socket socket) {
         try {
             isr = new InputStreamReader(socket.getInputStream());
             dos = new DataOutputStream(socket.getOutputStream());
