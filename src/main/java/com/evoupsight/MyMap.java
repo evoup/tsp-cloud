@@ -21,8 +21,8 @@ public class MyMap extends MapReduceBase implements Mapper<LongWritable, Text, T
         // 每个数据都是一个种群（第一栏是种群序号）
         String[] datas = line.split(" ");
         // 存储染色体数据的列表
-        Vector chromosomeList = new Vector();
-        for (int i = 1; i < 7; i++) {
+        Vector<String> chromosomeList = new Vector();
+        for (int i = 1; i < 7; i++) { // 每个种群6个染色体
             System.out.println("datas[i]:" + datas[i]);
             chromosomeList.addElement(datas[i]);
         }

@@ -4,6 +4,7 @@ package com.evoupsight.domain;
  * Created by evoup on 16-6-12.
  */
 public class TSPChromosome {
+    char[] gene;
     public static int[][] distance = {
             {0, 20, 25, 30, 60, 10, 15, 22, 6, 16},
             {20, 0, 2, 10, 50, 5, 10, 20, 8, 20},
@@ -29,7 +30,7 @@ public class TSPChromosome {
         return 0;
     }
 
-    public void setGeneArray(String element) {
-
+    public void setGeneArray(String chromosome) {
+        this.gene = chromosome.toCharArray();
     }
 }

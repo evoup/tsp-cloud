@@ -8,10 +8,10 @@ import java.util.Vector;
  * Created by evoup on 16-6-12.
  */
 public class TSPService {
-    Vector chromosomeList;
+    Vector<String> chromosomeList;
     TSPChromosome[] worm;
 
-    public TSPService(Vector list) {
+    public TSPService(Vector<String> list) {
         this.chromosomeList = list;
         worm[0] = null;
         worm[1] = null;
@@ -25,6 +25,7 @@ public class TSPService {
         // 创建第一代种群
         for (int i = 0; i < worm.length; i++) {
             worm[i] = new TSPChromosome();
+            worm[i].setGeneArray(chromosomeList.get(i));
         }
     }
 
