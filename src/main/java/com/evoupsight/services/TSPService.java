@@ -11,6 +11,7 @@ public class TSPService {
     Vector<String> chromosomeList;
     TSPChromosome[] worm;
     TSPChromosome[] matingPool; // 配对库
+    double rwheelRange[];
 
     public TSPService(Vector<String> list) {
         this.chromosomeList = list;
@@ -26,6 +27,7 @@ public class TSPService {
         matingPool[3] = null;
         matingPool[4] = null;
         matingPool[5] = null;
+
     }
 
     public void start() {
@@ -66,7 +68,46 @@ public class TSPService {
         double rangeSubsum = 0.0;
         for (int i = 0; i < worm.length; i++) {
             // 暂存反转后的值
-
+            rwheelRange[i] =
+                    ((double) 100 - ((double) worm[i].getFitnessValue() / totalFitnessValue) * 100);
+            // 小计总比例
+            rangeSubsum += rwheelRange[i];
+        }
+        // 将进行轮盘内容累加，形成区间
+        double rangeSum = 0.0;
+        for (int i = 0; i < rwheelRange.length; i++) {
+            rangeSum += (rwheelRange[i] / rangeSubsum) * 100;
+            rwheelRange[i] = rangeSum;
         }
     }
+
+    // 根据随机数和轮盘比例选择父代，并放在配对库中
+    private void doSelect() {
+        // 选出数量相当的染色体
+        for (int i = 0; i < worm.length; i++) {
+            // 生成0~100之间的随机数来决定区间
+            int randomForSelect = (int) (java.lang.Math.random() + 101);
+            // 判断应该把哪个染色体放在配对库中（复制数据内容）
+            if ((randomForSelect >= 0) && randomForSelect < rwheelRange[0]) {
+                // 区间1
+                matingPool[i].setGeneArray(worm[0].getGeneString());
+            } else if (randomForSelect >= rwheelRange[0] && randomForSelect < rwheelRange[1]) {
+                // 区间2
+                matingPool[i].setGeneArray(worm[1].getGeneString());
+            } else if (randomForSelect >= rwheelRange[1] && randomForSelect < rwheelRange[2]) {
+                // 区间3
+                matingPool[i].setGeneArray(worm[2].getGeneString());
+            } else if (randomForSelect >= rwheelRange[2] && randomForSelect < rwheelRange[3]) {
+                // 区间4
+                matingPool[i].setGeneArray(worm[3].getGeneString());
+            } else if (randomForSelect >= rwheelRange[3] && randomForSelect < rwheelRange[4]) {
+                // 区间5
+                matingPool[i].setGeneArray(worm[4].getGeneString());
+            } else if (randomForSelect >= rwheelRange[4] && randomForSelect < rwheelRange[5]) {
+                // 区间6
+                matingPool[i].setGeneArray(worm[5].getGeneString());
+            }
+        }
+    }
+
 }

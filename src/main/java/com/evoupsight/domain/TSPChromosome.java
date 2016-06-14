@@ -57,4 +57,8 @@ public class TSPChromosome {
     public void setGeneArray(String chromosome) {
         this.gene = chromosome.toCharArray();
     }
+
+    public String getGeneString() {
+        return new String(this.gene);
+    }
 }
