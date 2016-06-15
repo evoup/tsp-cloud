@@ -61,4 +61,9 @@ public class TSPChromosome {
     public String getGeneString() {
         return new String(this.gene);
     }
+
+    // TODO 是否正确？
+    public int getChromosomeLength() {
+        return new String(this.gene).length();
+    }
 }
