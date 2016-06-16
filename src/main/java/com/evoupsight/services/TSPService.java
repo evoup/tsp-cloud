@@ -52,10 +52,6 @@ public class TSPService {
         } while (roop < roopMax);
     }
 
-    public String getBestSolution() {
-        return "";
-    }
-
     private void setRange() {
         // 对适应度求和，以便取得轮盘赌选择法的分母
         int totalFitnessValue = 0;
@@ -232,6 +228,40 @@ public class TSPService {
                 worm2.setGeneArray(wormStr2);
             }
         }
+    }
+
+    // 进行变异运算
+    private void doMutation() {
+        // 变异概率
+        double pm = 0.0001;
+        // 根据染色体数进行变异运算
+        for (int i = 0; i < matingPool.length; i++) {
+            // 取出配对库中的染色体
+            TSPChromosome worm = matingPool[i];
+            // 产生大于等于0，且小于1的随机数
+            double decide = java.lang.Math.random();
+            // 随机数小于变异概率时才进行变异运算
+            if (decide <= pm) {
+                // TODO 变异方法要实现
+                System.out.println("mutation!");
+                //matingPool[i].mutationACT();
+            }
+        }
+    }
+
+    // 从种群中挑选适应度最小的组合作为最优解
+    public String getBestSolution() {
+        int minValue = 100000000;
+        String geneStr = "";
+        // 轮询所有染色体
+        for (int i = 0; i < worm.length; i++) {
+            // 判断是否是较好的适应度
+            if (worm[i].getFitnessValue() < minValue) {
+                minValue = worm[i].getFitnessValue();
+                geneStr = worm[i].getGeneString();
+            }
+        }
+        return geneStr;
     }
 
 }
