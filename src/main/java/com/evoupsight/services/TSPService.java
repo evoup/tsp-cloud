@@ -9,9 +9,9 @@ import java.util.Vector;
  */
 public class TSPService {
     Vector<String> chromosomeList;
-    TSPChromosome[] worm;
-    TSPChromosome[] matingPool; // 配对库
-    double rwheelRange[];
+    TSPChromosome[] worm = new TSPChromosome[6];
+    TSPChromosome[] matingPool = new TSPChromosome[6]; // 配对库
+    double rwheelRange[] = new double[6];
 
     public TSPService(Vector<String> list) {
         this.chromosomeList = list;
