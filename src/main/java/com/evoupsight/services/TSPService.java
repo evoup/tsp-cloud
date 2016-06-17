@@ -61,6 +61,7 @@ public class TSPService {
             // 进行子代代替父代的工作
             doReplace();
             // 进行下一次进化过程
+            System.out.println("完成替代");
             roop++;
         } while (roop < roopMax);
     }
