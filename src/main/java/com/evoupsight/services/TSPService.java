@@ -47,7 +47,18 @@ public class TSPService {
             // 计算轮盘区间
             setRange();
             System.out.println("完成轮盘设置");
-            //............
+            // 根据轮盘赌选择法选择父代，并放在配对库中
+            doSelect();
+            System.out.println("完成父代选择");
+            // 进行染色体交叉
+            doCrossover();
+            System.out.println("完成染色体交叉");
+            // 进行变异运算
+            doMutation();
+            System.out.println("完成变异运算");
+            // 进行子代代替父代的工作
+            // TODO
+            // 进行下一次进化过程
             roop++;
         } while (roop < roopMax);
     }
