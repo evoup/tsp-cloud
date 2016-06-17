@@ -21,9 +21,9 @@ public class TSPChromosome {
     // 计算染色体的适应度
     public int getFitnessValue() {
         int fitnessValue = 0;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < gene.length; i++) {
             // 查表取得目前索引值城市和下一个城市之间的距离
-            if (i == 9) {
+            if (i == (gene.length - 1)) {
                 // 应对比数组中最后一个城市和数组第一个城市
                 System.out.println("i:" + i);
                 int rowInx = ((int) gene[i]) - 65;
