@@ -31,6 +31,12 @@ public class TSPChromosome {
                 // 应对比数组中最后一个城市和数组第一个城市
                 System.out.println("i:" + i);
                 int rowInx = ((int) gene[i]) - 65;
+                int colInx = ((int) gene[0]) - 65;
+                fitnessValue += distance[rowInx][colInx];
+            } else {
+                // 索引值指向目前城市和下一个城市
+                // 字符A的ASCII值是65，因而指向第0个元素
+                int rowInx = ((int) gene[i]) - 65;
                 int colInx = ((int) gene[i + 1]) - 65;
                 fitnessValue += distance[rowInx][colInx];
             }
