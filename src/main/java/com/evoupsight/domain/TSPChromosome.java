@@ -1,5 +1,7 @@
 package com.evoupsight.domain;
 
+import com.google.gson.Gson;
+
 /**
  * Created by evoup on 16-6-12.
  */
@@ -21,6 +23,7 @@ public class TSPChromosome {
     // 计算染色体的适应度
     public int getFitnessValue() {
         int fitnessValue = 0;
+        System.out.println("gene:" + new Gson().toJson(gene));
         for (int i = 0; i < gene.length; i++) {
             // 查表取得目前索引值城市和下一个城市之间的距离
             if (i == (gene.length - 1)) {
