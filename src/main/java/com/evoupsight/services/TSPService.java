@@ -1,6 +1,7 @@
 package com.evoupsight.services;
 
 import com.evoupsight.domain.TSPChromosome;
+import com.google.gson.Gson;
 
 import java.util.Vector;
 
@@ -36,6 +37,7 @@ public class TSPService {
             worm[i] = new TSPChromosome();
             worm[i].setGeneArray(chromosomeList.get(i));
         }
+        System.out.println("worm:" + new Gson().toJson(worm));
         // 创建配对库中的对象
         for (int i = 0; i < matingPool.length; i++) {
             matingPool[i] = new TSPChromosome();
