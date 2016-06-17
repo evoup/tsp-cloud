@@ -59,7 +59,7 @@ public class TSPService {
             doMutation();
             System.out.println("完成变异运算");
             // 进行子代代替父代的工作
-            // TODO
+            doReplace();
             // 进行下一次进化过程
             roop++;
         } while (roop < roopMax);
@@ -259,6 +259,13 @@ public class TSPService {
                 System.out.println("mutation!");
                 //matingPool[i].mutationACT();
             }
+        }
+    }
+
+    // 采取整群取代的策略
+    private void doReplace() {
+        for (int i = 0; i < worm.length; i++) {
+            worm[i].setGeneArray(matingPool[i].getGeneString());
         }
     }
 
