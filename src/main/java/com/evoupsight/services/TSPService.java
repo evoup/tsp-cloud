@@ -97,7 +97,7 @@ public class TSPService {
         // 选出数量相当的染色体
         for (int i = 0; i < worm.length; i++) {
             // 生成0~100之间的随机数来决定区间
-            int randomForSelect = (int) (java.lang.Math.random() + 101);
+            int randomForSelect = (int) (java.lang.Math.random() * 101);
             // 判断应该把哪个染色体放在配对库中（复制数据内容）
             if ((randomForSelect >= 0) && randomForSelect < rwheelRange[0]) {
                 // 区间1
