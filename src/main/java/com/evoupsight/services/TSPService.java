@@ -222,7 +222,7 @@ public class TSPService {
                             // oldInx: 旧字符在新区段中的位置
                             do {
                                 // 取得对应旧区段中相同位置的字符
-                                oldChar = "" + wormStr1_sec2.charAt(oldInx);
+                                oldChar = "" + wormStr2_sec2.charAt(oldInx);
                                 // 判断该字符是否存在于新区段
                                 oldInx = wormStr1_sec2.indexOf(oldChar);
                             } while (oldInx != -1);
