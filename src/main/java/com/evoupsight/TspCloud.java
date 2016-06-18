@@ -1,6 +1,8 @@
 package com.evoupsight;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -109,7 +111,26 @@ public class TspCloud {
             System.out.println(e.getMessage());
         }
         ///
-        return "some result";
+        try {
+            // 取得默认的配置设置
+            Configuration hdfsConf = new Configuration();
+            // 取得封装文件系统信息的对象
+            FileSystem hdfs = FileSystem.get(hdfsConf);
+            // 遗传算法的结果文件
+            Path outputPath = new Path("/TSPOutput/" + jobName + "/part-0000");
+            // 打开输入数据流
+            FSDataInputStream dis = hdfs.open(outputPath);
+            FileStatus stat = hdfs.getFileStatus(outputPath);
+            // 读入完整的内容
+            byte[] buffer = new byte[Integer.parseInt(String.valueOf(stat.getLen()))];
+            dis.readFully(0, buffer);
+            resStr = new String(buffer);
+        } catch (Exception e) {
+            System.out.println("read from output file error:" + e);
+            resStr = "ERR_Read_Output:" + e;
+        }
+        ///
+        return resStr;
     }
 
     /**
