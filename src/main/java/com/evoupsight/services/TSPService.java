@@ -140,6 +140,7 @@ public class TSPService {
             if (decide <= pc && !wormStr1.equals(wormStr2)) {
                 int point1 = 0;
                 int point2 = 0;
+                System.out.println("start do");
                 do {
                     // 生成2个交叉点
                     point1 = (int) (java.lang.Math.random() * worm1.getChromosomeLength());
@@ -153,6 +154,7 @@ public class TSPService {
                     }
                     // 如果左右交叉点同时指向数据的最两端，没有交叉的意义
                 } while (point1 == 0 && point2 == worm1.getChromosomeLength() - 1);
+                System.out.println("end do");
                 // 取得染色体的数据内容，并且根据交换点切分3个子区段
                 // 第二个区段就是要进行数据交换的区段
                 String wormStr1_sec1 = wormStr1.substring(0, point1);
@@ -164,6 +166,7 @@ public class TSPService {
                 String wormStr2_sec3 = wormStr2.substring(point2 + 1, wormStr2.length());
                 // 判断第一个染色体新的第二个区段（第二个染色体的第二区段）
                 // 所有数据内容和旧数据之间的关系
+                System.out.println("start for1");
                 for (int secInx = 0; secInx < wormStr2_sec2.length(); secInx++) {
                     // 新区段的字符
                     String newChar = "" + wormStr2_sec2.charAt(secInx);
@@ -199,7 +202,7 @@ public class TSPService {
                         // System.out.println("新字符在其他两个区段中不重复");
                     }
                 }
-
+                System.out.println("start for2");
                 // 判断第一个染色体新的第二个区段（第二个染色提的第二个区段）
                 // 所有数据内容和旧数据之间的关系
                 for (int secInx = 0; secInx < wormStr1_sec2.length(); secInx++) {
@@ -244,6 +247,7 @@ public class TSPService {
                 worm1.setGeneArray(wormStr1);
                 worm2.setGeneArray(wormStr2);
             }
+            System.out.println("end if");
         }
         System.out.println("matingPool after crossover:" + new Gson().toJson(matingPool));
     }
