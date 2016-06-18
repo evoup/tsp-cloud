@@ -268,6 +268,7 @@ public class TSPService {
         for (int i = 0; i < worm.length; i++) {
             worm[i].setGeneArray(matingPool[i].getGeneString());
         }
+        System.out.println("gene:" + new Gson().toJson(worm));
     }
 
     // 从种群中挑选适应度最小的组合作为最优解
