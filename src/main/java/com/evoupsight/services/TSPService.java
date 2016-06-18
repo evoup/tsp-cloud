@@ -93,6 +93,7 @@ public class TSPService {
 
     // 根据随机数和轮盘比例选择父代，并放在配对库中
     private void doSelect() {
+        System.out.println("matingPool before doSelect:" + new Gson().toJson(matingPool));
         // 选出数量相当的染色体
         for (int i = 0; i < worm.length; i++) {
             // 生成0~100之间的随机数来决定区间
@@ -118,6 +119,7 @@ public class TSPService {
                 matingPool[i].setGeneArray(worm[5].getGeneString());
             }
         }
+        System.out.println("matingPool after doSelect:" + new Gson().toJson(matingPool));
     }
 
     // 进行染色体交叉
