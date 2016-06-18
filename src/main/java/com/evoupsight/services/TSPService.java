@@ -141,7 +141,7 @@ public class TSPService {
                 do {
                     // 生成2个交叉点
                     point1 = (int) (java.lang.Math.random() * worm1.getChromosomeLength());
-                    point2 = (int) (java.lang.Math.random() * worm2.getChromosomeLength());
+                    point2 = (int) (java.lang.Math.random() * worm1.getChromosomeLength());
                     // point1为左交叉点，point2为右交叉点
                     // point2大于point1时，交换位置
                     if (point2 < point1) {
