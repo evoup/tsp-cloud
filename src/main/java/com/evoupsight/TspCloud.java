@@ -117,7 +117,7 @@ public class TspCloud {
             // 取得封装文件系统信息的对象
             FileSystem hdfs = FileSystem.get(hdfsConf);
             // 遗传算法的结果文件
-            Path outputPath = new Path("/TSPOutput/" + jobName + "/part-0000");
+            Path outputPath = new Path("/TSPOutput/" + jobName + "/part-00000");
             // 打开输入数据流
             FSDataInputStream dis = hdfs.open(outputPath);
             FileStatus stat = hdfs.getFileStatus(outputPath);
