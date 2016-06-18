@@ -122,6 +122,7 @@ public class TSPService {
 
     // 进行染色体交叉
     private void doCrossover() {
+        System.out.println("matingPool before crossover:" + new Gson().toJson(matingPool));
         double pc = 0.8; // 假设交叉概率为0.8
         // 两两交叉配对库中的染色体
         // 因为有6个染色体，因而要执行3次交叉运算
@@ -242,6 +243,7 @@ public class TSPService {
                 worm2.setGeneArray(wormStr2);
             }
         }
+        System.out.println("matingPool after crossover:" + new Gson().toJson(matingPool));
     }
 
     // 进行变异运算
@@ -265,10 +267,11 @@ public class TSPService {
 
     // 采取整群取代的策略
     private void doReplace() {
+        System.out.println("gene before replace:" + new Gson().toJson(worm));
         for (int i = 0; i < worm.length; i++) {
             worm[i].setGeneArray(matingPool[i].getGeneString());
         }
-        System.out.println("gene:" + new Gson().toJson(worm));
+        System.out.println("gene after replace:" + new Gson().toJson(worm));
     }
 
     // 从种群中挑选适应度最小的组合作为最优解
